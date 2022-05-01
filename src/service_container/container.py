@@ -4,10 +4,7 @@ from typing import Callable, List, Optional, Dict
 from flask import request
 
 from src.config import app
-from src.models.service_container_run_report import ServiceContainerRunReport
-
-class ServiceContainers:
-    containers: Dict[str, ServiceContainer] = {}
+from src.service_container.report import ServiceContainerRunReport
 
 
 class ServiceContainer:
@@ -17,10 +14,6 @@ class ServiceContainer:
         self.reports: List[ServiceContainerRunReport] = []
         self.current_run_report: Optional[ServiceContainerRunReport] = None
 
-        self._register_to_containers()
-        self._register_to_flask()
-
-    def _register_to_flask(self):
         def callback():
             return self.flask_request_handler()
 
@@ -28,9 +21,6 @@ class ServiceContainer:
         methods = ['POST', 'GET', 'PUT', 'DELETE']
         endpoint = '/' + self.service.__name__.replace('_', '-')
         app.route(endpoint, methods=methods)(callback)
-
-    def _register_to_containers(self):
-        ServiceContainers.containers[self.service.__name__] = self
 
     def wrapper(self, params):
         report = ServiceContainerRunReport()
