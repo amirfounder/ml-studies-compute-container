@@ -1,6 +1,6 @@
 from __future__ import annotations
 from threading import Thread
-from typing import Callable, List, Optional, Dict
+from typing import Callable, List, Optional
 from flask import request
 
 from src.config import app

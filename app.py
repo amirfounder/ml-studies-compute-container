@@ -8,8 +8,7 @@ from services import (
     scrape_latest_cnn_articles
 )
 
-from src import app
-from src.service_container.container import ServiceContainer
+from src import app, ServiceContainer
 
 
 c = ServiceContainer(index_latest_cnn_rss_feed_entries)
