@@ -1,7 +1,7 @@
 from datetime import datetime
 
 
-class ServiceReport:
+class ServiceContainerRunReport:
     def __init__(self):
         self.status = 'RUNNING'
         self.start = datetime.now()
