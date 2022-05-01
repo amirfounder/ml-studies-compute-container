@@ -24,9 +24,7 @@ c = ServiceContainer(scrape_latest_cnn_articles)
 
 @app.route('/endpoints')
 def endpoints():
-    return {
-        'endpoints': [str(e) for e in app.url_map.iter_rules() if str(e) != "/static/<path:filename>"]
-    }
+    return {'endpoints': [str(e) for e in app.url_map.iter_rules() if str(e) != "/static/<path:filename>"]}
 
 
 def run_flask():
