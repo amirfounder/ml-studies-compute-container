@@ -43,9 +43,7 @@ if __name__ == '__main__':
     t1 = Thread(target=run_flask, daemon=True)
     t2 = Thread(target=run_scheduler, daemon=True)
 
-    ts = [t1, t2]
-
-    for t in ts:
+    for t in [t1, t2]:
         t.start()
 
     while True:
