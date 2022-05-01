@@ -1,2 +1,2 @@
 from .config import app
-from .container import register
+from .service_container import ServiceContainer
